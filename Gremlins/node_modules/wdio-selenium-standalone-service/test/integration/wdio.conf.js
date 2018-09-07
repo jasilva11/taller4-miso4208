@@ -4,7 +4,10 @@ exports.config = {
     ],
 
     capabilities: [{
-        browserName: 'firefox'
+        browserName: 'chrome',
+        chromeOptions: {
+            args: ['--headless', '--disable-gpu']
+        }
     }],
 
     sync: true,

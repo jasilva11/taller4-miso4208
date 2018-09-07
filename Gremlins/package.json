@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "wdio-jasmine-framework": "^0.3.2",
-    "wdio-selenium-standalone-service": "0.0.9",
+    "wdio-selenium-standalone-service": "0.0.10",
     "wdio-spec-reporter": "^0.1.2"
   }
 }

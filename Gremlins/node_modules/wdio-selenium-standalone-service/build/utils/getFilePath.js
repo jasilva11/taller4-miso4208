@@ -20,7 +20,7 @@ var FILE_EXTENSION_REGEX = /\.[0-9a-z]+$/i;
  * @return {String}                 absolute file path
  */
 function getFilePath(filePath, defaultFilename) {
-    var absolutePath = _path2.default.join(process.cwd(), filePath);
+    var absolutePath = _path2.default.resolve(filePath);
 
     // test if we already have a file (e.g. selenium.txt, .log, log.txt, etc.)
     // NOTE: path.extname doesn't work to detect a file, cause dotfiles are reported by node to have no extension

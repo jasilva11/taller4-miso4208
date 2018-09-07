@@ -15,14 +15,14 @@ function unleashGremlins(ttl, callback) {
     callback();
   }
   var horde = window.gremlins.createHorde()
-  .gremlin(gremlins.species.formFiller())
+  .gremlin(gremlins.species.formFiller()
   .canFillElement(function(element) {
-    return $(element)==$('input');
-  })
-  .gremlin(gremlins.species.clicker().clickTypes(['click']))
+    return element.tagName=='INPUT' && (element.offsetParent !== null);
+  }))
+  .gremlin(gremlins.species.clicker().clickTypes(['click'])
   .canClick(function(element) {
-    return $(element)==$('button')||$(element)==$('a');
-  });
+    return (element.tagName=='BUTTON'||element.tagName=='A') && (element.offsetParent !== null);
+  }));
   horde.strategy(gremlins.strategies.distribution()
     .delay(50)
     .distribution([0.5, 0.1]) 

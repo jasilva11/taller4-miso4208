@@ -33,13 +33,14 @@ function randomEvent(monkeysLeft) {
         return Math.floor(Math.random() * (max - min)) + min;
     };
     var monkeysLeft = monkeysLeft;
-    var types = ['input', 'a', 'button', 'combobox'];
+    var types = ['input', 'a', 'button', 'select'];
     if(monkeysLeft > 0) {
         var element = types[getRandomInt(0, types.length-1)];
         cy.get(element).then($links => {
             var randomLink = $links.get(getRandomInt(0, $links.length-1));
             if(!Cypress.Dom.isHidden(randomLink)) {
                 if(element=='input') { cy.wrap(randomLink).click({force: true}).type("test1"); }
+                else if(element == 'select'){cy.wrap(randomLink).select(0);}
                 else{cy.wrap(randomLink).click({force: true});}
                 monkeysLeft = monkeysLeft - 1;
             }
